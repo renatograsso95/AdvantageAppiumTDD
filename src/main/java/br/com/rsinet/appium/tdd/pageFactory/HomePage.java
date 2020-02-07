@@ -17,22 +17,38 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class HomePage {
 
-	private WebDriverWait wait;
-	private AndroidDriver<MobileElement> driver;
+	static AndroidDriver<MobileElement> driver;
+	private static WebDriverWait wait;
 
-	@FindBy(how = How.ID, using = "com.Advantage.aShopping:id/imageViewMenu")
-	private WebElement txtbx_menu;
-
-	public HomePage(WebDriver driver) {
-		this.driver = (AndroidDriver<MobileElement>) driver;
-		PageFactory.initElements(this.driver, this);
-		wait = new WebDriverWait(this.driver, 20);
+	public static MobileElement optionsBtn(AndroidDriver<?> driver) {
+		return (MobileElement) driver.findElementById("com.Advantage.aShopping:id/imageViewMenu");
 	}
 
-	public void clicarMenu() {
-		wait.pollingEvery(Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.visibilityOf(txtbx_menu));
-		txtbx_menu.click();
+	public static MobileElement loginBtn(AndroidDriver<?> driver) {
+		return (MobileElement) driver.findElementById("com.Advantage.aShopping:id/textViewMenuUser");
 	}
+
+	public static MobileElement createLnk(AndroidDriver<?> driver) {
+		return (MobileElement) driver.findElementById("com.Advantage.aShopping:id/textViewSingUpToday");
+	}
+
+	public static MobileElement categorySpeaker(AndroidDriver<?> driver) {
+		return (MobileElement) driver.findElementByXPath(
+				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[4]/android.widget.ImageView");
+	}
+
+	public static MobileElement btnSearch(AndroidDriver<?> driver) {
+		return (MobileElement) driver.findElementById("com.Advantage.aShopping:id/imageViewSearch");
+	}
+
+	public static MobileElement boxSearch(AndroidDriver<?> driver) {
+		return (MobileElement) driver.findElementById("com.Advantage.aShopping:id/editTextSearch");
+	}
+	
+	public static MobileElement usernameCheck(AndroidDriver<?> driver) {
+		return (MobileElement) driver.findElementById("com.Advantage.aShopping:id/textViewMenuUser");
+	}
+	
+
 	
 }
